@@ -32,6 +32,7 @@ class BookDao(context: Context) {
         return msg
     }
 
+
     fun update(book: Book) : Boolean{
         val db = database.writableDatabase
         val contentValues = ContentValues()
@@ -50,5 +51,9 @@ class BookDao(context: Context) {
     }
 
 
+    fun remove(book: Book) : Int {
+        val db = database.writableDatabase
+        return db.delete(TABLE_BOOKS, "id =?", arrayOf(book.id.toString()))
+    }
 
 }
