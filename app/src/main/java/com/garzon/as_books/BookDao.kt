@@ -92,5 +92,20 @@ class BookDao(context: Context) {
     }
 
 
+    fun getByName(name: String): ArrayList<Book>{
+        Log.v("LOG","GetAll")
+        val db = database.writableDatabase
+        val sql = "SELECT * from " + TABLE_BOOKS + "where $BOOK_TITLE like '%$name'"
+        val cursor = db.rawQuery(sql, null)
+        val books = ArrayList<Book>()
+        while (cursor.moveToNext()){
+            val book = bookFromCursor(cursor)
+            books.add(book)
+        }
+        cursor.close()
+        db.close()
+        Log.v("LOG", "GET ${books.size}")
+        return books
+    }
 
 }
