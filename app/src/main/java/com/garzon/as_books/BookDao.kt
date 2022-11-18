@@ -24,9 +24,9 @@ class BookDao(context: Context) {
 
         var resp_id = db.insert(TABLE_BOOKS, null, contentValues)
         val msg = if(resp_id!=-1L){
-            "Inserido com sucesso"
+            "Book Inserted Successfully"
         }else{
-            "Erro ao inserir"
+            "Error when Inserting Book"
         }
         db.close()
         return msg
