@@ -56,4 +56,22 @@ class BookDao(context: Context) {
         return db.delete(TABLE_BOOKS, "id =?", arrayOf(book.id.toString()))
     }
 
+
+    fun getAll(): ArrayList<Book>{
+        Log.v("LOG","GetAll")
+        val db = database.writableDatabase
+        val sql = "SELECT * from " + TABLE_BOOKS
+        val cursor = db.rawQuery(sql, null)
+        val books = ArrayList<Book>()
+        while (cursor.moveToNext()){
+            val book = bookFromCursor(cursor)
+            books.add(book)
+        }
+        cursor.close()
+        db.close()
+        Log.v("LOG", "GET ${books.size}")
+        return books
+    }
+
+
 }
