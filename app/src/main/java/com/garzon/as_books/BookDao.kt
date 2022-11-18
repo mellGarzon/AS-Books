@@ -1,6 +1,7 @@
 package com.garzon.as_books
 
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -9,6 +10,23 @@ import android.util.Log
 
 class BookDao(context: Context) {
     var database = DbHelper(context)
+
+
+    @SuppressLint("Range")
+    private fun bookFromCursor(cursor: Cursor): Book {
+        val id = cursor.getInt(cursor.getColumnIndex(BOOK_ID))
+        val author = cursor.getString(cursor.getColumnIndex(BOOK_AUTHOR))
+        val title = cursor.getString(cursor.getColumnIndex(BOOK_TITLE))
+        val type = cursor.getString(cursor.getColumnIndex(BOOK_TYPE))
+        val pages = cursor.getInt(cursor.getColumnIndex(BOOK_PAGES))
+        val bookMark = cursor.getInt(cursor.getColumnIndex(BOOK_BOOKMARK))
+        val isReadInt = cursor.getInt(cursor.getColumnIndex(BOOK_IS_READ))
+
+        // 1 = true | 0 = false. Transform the isReadInt value to a bool.
+        val isRead = isReadInt == 1
+
+        return Book(id, pages, bookMark, type, author, title, isRead)
+    }
 
 
     fun insert(book: Book): String {
@@ -72,6 +90,7 @@ class BookDao(context: Context) {
         Log.v("LOG", "GET ${books.size}")
         return books
     }
+
 
 
 }
