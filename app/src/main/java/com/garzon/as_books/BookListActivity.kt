@@ -3,9 +3,12 @@ package com.garzon.as_books
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class BookListActivity : AppCompatActivity() {
 
@@ -14,6 +17,10 @@ class BookListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_list)
+        val recyclerViewBooks = findViewById<RecyclerView>(R.id.rvData)
+        recyclerViewBooks.layoutManager = LinearLayoutManager(this)
+        recyclerViewBooks.setHasFixedSize(true)
+
         updateAdapter()
         initRecyclerView()
 
@@ -26,25 +33,25 @@ class BookListActivity : AppCompatActivity() {
     }
 
     private fun updateAdapter() {
-        //var rvDados = findViewById<RecyclerView>(R.id.rvDados)
-        //var txtMsg = findViewById<TextView>(R.id.txtMsg)
+        val rvData = findViewById<RecyclerView>(R.id.rvData)
+        val txtMsg = findViewById<TextView>(R.id.txtMsg)
         val bookDao = BookDao(this)
-        booksList.clear() //todo
+        //booksList.clear() //todo
         booksList = bookDao.getAll()
         if (booksList.isEmpty()) {
-            rvDados.setVisibility(View.GONE);
-            //txtMsg.setVisibility(View.VISIBLE);
-            //txtMsg.setText("Sem dados para exibir")
+            rvData.visibility = View.GONE;
+            txtMsg.visibility = View.VISIBLE;
+            txtMsg.text = "Sem dados para exibir"
         }
         else {
-            rvDados.setVisibility(View.VISIBLE);
-            //txtMsg.setVisibility(View.GONE);
+            rvData.visibility = View.VISIBLE;
+            txtMsg.visibility = View.GONE;
         }
-        rvDados.adapter?.notifyDataSetChanged()
+        rvData.adapter?.notifyDataSetChanged()
     }
 
     private fun initRecyclerView() {
-        var rvDados = findViewById<RecyclerView>(R.id.rvDados)
+        val rvDados = findViewById<RecyclerView>(R.id.rvData)
         Log.v("LOG", "Inicia RecyclerView")
         val adapter2 = BookAdapter(booksList)
         rvDados.adapter = adapter2
@@ -52,6 +59,8 @@ class BookListActivity : AppCompatActivity() {
         // val layout = LinearLayoutManager(this)
         rvDados.layoutManager = layout
     }
+
+
 }
 
 

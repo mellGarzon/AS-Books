@@ -6,13 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".BookListActivity">
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDados"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/rvData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/txtMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/rvData"
+        tools:text="No data" />
 </androidx.constraintlayout.widget.ConstraintLayout>

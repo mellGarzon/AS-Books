@@ -10,50 +10,49 @@
         android:id="@+id/tvTitle"
         android:layout_width="28dp"
         android:layout_height="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Title"
-        app:layout_constraintEnd_toStartOf="@+id/tvAuthor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvType" />
 
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="121dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Author"
-        app:layout_constraintEnd_toStartOf="@+id/tvBookMark"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPageNumber" />
 
     <TextView
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="148dp"
         android:text="Type"
-        app:layout_constraintEnd_toStartOf="@+id/tvIsRead"
-        app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBookMark" />
 
     <TextView
         android:id="@+id/tvBookMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="BookMark"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPageNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="108dp"
         android:text="PageNumber"
-        app:layout_constraintEnd_toStartOf="@+id/tvType"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -61,12 +60,11 @@
         android:id="@+id/tvIsRead"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="IsRead"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBookMark" />
-
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

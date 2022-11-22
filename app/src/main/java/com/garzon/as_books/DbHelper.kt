@@ -21,6 +21,7 @@ class DbHelper(context: Context) :
         db.execSQL(sql)
         Log.e("LOG","Criando")
     }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME)
         onCreate(db)

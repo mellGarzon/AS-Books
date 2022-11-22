@@ -40,7 +40,7 @@ class BookDao(context: Context) {
         contentValues.put(BOOK_BOOKMARK, book.bookMark)
         contentValues.put(BOOK_IS_READ, book.isRead)
 
-        var resp_id = db.insert(TABLE_BOOKS, null, contentValues)
+        val resp_id = db.insert(TABLE_BOOKS, null, contentValues)
         val msg = if(resp_id!=-1L){
             "Book Inserted Successfully"
         }else{

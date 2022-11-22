@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.TextView
 
 
 class BookAdapter (private val books: List<Book>):
@@ -31,27 +32,27 @@ class BookAdapter (private val books: List<Book>):
         var book = books[position]
 
         holder.title.text = book.title
-        holder.bookMark.text = book.bookMark
+        holder.bookMark.text = book.bookMark.toString()
         holder.author.text = book.author
-        holder.pageNumber.text = book.pageNumber
+        holder.pageNumber.text = book.pageNumber.toString()
         holder.type.text = book.type
     }
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
 
-        var title =view.findViewById<TextView>(R.id.title)
-        var bookMark =view.findViewById<TextView>(R.id.bookMark)
-        var author =view.findViewById<TextView>(R.id.author)
-        var pageNumber =view.findViewById<TextView>(R.id.pageNumber)
-        var type =view.findViewById<TextView>(R.id.type)
+        var title =view.findViewById<TextView>(R.id.tvTitle)
+        var bookMark =view.findViewById<TextView>(R.id.tvBookMark)
+        var author =view.findViewById<TextView>(R.id.tvAuthor)
+        var pageNumber =view.findViewById<TextView>(R.id.tvPageNumber)
+        var type =view.findViewById<TextView>(R.id.tvType)
 
         init {
             // Define click listener for the ViewHolder's View.
-            title = view.findViewById(R.id.title)
-            bookMark = view.findViewById(R.id.bookMark)
-            author = view.findViewById(R.id.author)
-            pageNumber = view.findViewById(R.id.pageNumber)
-            type = view.findViewById(R.id.type)
+            title = view.findViewById(R.id.tvTitle)
+            bookMark = view.findViewById(R.id.tvBookMark)
+            author = view.findViewById(R.id.tvAuthor)
+            pageNumber = view.findViewById(R.id.tvPageNumber)
+            type = view.findViewById(R.id.tvType)
         }
     }
 }
