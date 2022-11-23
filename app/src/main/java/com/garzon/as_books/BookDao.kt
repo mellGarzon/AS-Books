@@ -108,18 +108,17 @@ class BookDao(context: Context) {
         return books
     }
 
+    fun getByIsRead(boolValue: Boolean): ArrayList<Book>{
+        val isRead = if (boolValue) 1 else 0
 
-    fun findIsRead(boolValue: Boolean): ArrayList<Book>{
-        Log.v("LOG","GetAll")
+        Log.v("LOG","getByName")
         val db = database.writableDatabase
-        val sql = "SELECT * FROM $TABLE_BOOKS"
+        val sql = "SELECT * FROM $TABLE_BOOKS WHERE $BOOK_IS_READ LIKE '%$isRead%'"
         val cursor = db.rawQuery(sql, null)
         val books = ArrayList<Book>()
         while (cursor.moveToNext()){
             val book = bookFromCursor(cursor)
-            if(book.isRead == boolValue){
-                books.add(book)
-            }
+            books.add(book)
         }
         cursor.close()
         db.close()
