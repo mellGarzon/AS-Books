@@ -31,6 +31,7 @@ class BookAdapter (private val books: List<Book>):
         Log.v("LOG", "ViewHolder")
         var book = books[position]
 
+        holder.id.text = book.id.toString()
         holder.title.text = book.title
         holder.bookMark.text = book.bookMark.toString()
         holder.author.text = book.author
@@ -41,6 +42,7 @@ class BookAdapter (private val books: List<Book>):
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
 
+        var id = view.findViewById<TextView>(R.id.tvId)
         var title =view.findViewById<TextView>(R.id.tvTitle)
         var bookMark =view.findViewById<TextView>(R.id.tvBookMark)
         var author =view.findViewById<TextView>(R.id.tvAuthor)
@@ -50,6 +52,7 @@ class BookAdapter (private val books: List<Book>):
 
         init {
             // Define click listener for the ViewHolder's View.
+            id = view.findViewById(R.id.tvId)
             title = view.findViewById(R.id.tvTitle)
             bookMark = view.findViewById(R.id.tvBookMark)
             author = view.findViewById(R.id.tvAuthor)
