@@ -62,8 +62,8 @@ class BookDao(context: Context) {
         contentValues.put(BOOK_BOOKMARK, book.bookMark)
         contentValues.put(BOOK_IS_READ, book.isRead)
 
-       db.insertWithOnConflict(TABLE_BOOKS, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE)
-       db.close()
+        db.insertWithOnConflict(TABLE_BOOKS, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE)
+        db.close()
 
         return true
     }

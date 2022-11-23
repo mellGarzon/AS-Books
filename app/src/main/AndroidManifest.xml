@@ -14,7 +14,15 @@
         android:theme="@style/Theme.ASBooks"
         tools:targetApi="31">
         <activity
-            android:name=".BookListActivity"
+            android:name=".AddBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.ASBooks.NoActionBar" />
+        <activity
+            android:name=".CreateActivity"
             android:exported="false" />
         <activity
             android:name=".UpdateActivity"
