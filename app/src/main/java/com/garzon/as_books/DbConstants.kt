@@ -1,6 +1,6 @@
 package com.garzon.as_books
 
-const val DATABASE_NAME = "clientes.db"
+const val DATABASE_NAME = "booksapp.db"
 const val DATABASE_VERSION = 2
 
 // Books
