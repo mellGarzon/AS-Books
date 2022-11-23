@@ -36,6 +36,7 @@ class BookAdapter (private val books: List<Book>):
         holder.author.text = book.author
         holder.pageNumber.text = book.pageNumber.toString()
         holder.type.text = book.type
+        holder.isRead.text = book.isRead.toString()
     }
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
@@ -45,6 +46,7 @@ class BookAdapter (private val books: List<Book>):
         var author =view.findViewById<TextView>(R.id.tvAuthor)
         var pageNumber =view.findViewById<TextView>(R.id.tvPageNumber)
         var type =view.findViewById<TextView>(R.id.tvType)
+        var isRead = view.findViewById<TextView>(R.id.tvIsRead)
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -53,6 +55,7 @@ class BookAdapter (private val books: List<Book>):
             author = view.findViewById(R.id.tvAuthor)
             pageNumber = view.findViewById(R.id.tvPageNumber)
             type = view.findViewById(R.id.tvType)
+            isRead = view.findViewById(R.id.tvIsRead)
         }
     }
 }
