@@ -78,7 +78,7 @@ class BookDao(context: Context) {
     fun getAll(): ArrayList<Book>{
         Log.v("LOG","GetAll")
         val db = database.writableDatabase
-        val sql = "SELECT * from " + TABLE_BOOKS
+        val sql = "SELECT * FROM $TABLE_BOOKS"
         val cursor = db.rawQuery(sql, null)
         val books = ArrayList<Book>()
         while (cursor.moveToNext()){
@@ -92,15 +92,36 @@ class BookDao(context: Context) {
     }
 
 
-    fun getByName(name: String): ArrayList<Book>{
-        Log.v("LOG","GetAll")
+    // TODO NEED FIX
+    // QUERY NOT WORKING
+    fun getByTitle(title: String): ArrayList<Book>{
+        Log.v("LOG","getByName")
         val db = database.writableDatabase
-        val sql = "SELECT * from " + TABLE_BOOKS + "where $BOOK_TITLE like '%$name'"
+        val sql = "SELECT * FROM $TABLE_BOOKS WHERE $BOOK_TITLE LIKE $title"
         val cursor = db.rawQuery(sql, null)
         val books = ArrayList<Book>()
         while (cursor.moveToNext()){
             val book = bookFromCursor(cursor)
             books.add(book)
+        }
+        cursor.close()
+        db.close()
+        Log.v("LOG", "GET ${books.size}")
+        return books
+    }
+
+
+    fun findIsRead(boolValue: Boolean): ArrayList<Book>{
+        Log.v("LOG","GetAll")
+        val db = database.writableDatabase
+        val sql = "SELECT * FROM $TABLE_BOOKS"
+        val cursor = db.rawQuery(sql, null)
+        val books = ArrayList<Book>()
+        while (cursor.moveToNext()){
+            val book = bookFromCursor(cursor)
+            if(book.isRead == boolValue){
+                books.add(book)
+            }
         }
         cursor.close()
         db.close()
