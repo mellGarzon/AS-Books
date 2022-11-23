@@ -12,7 +12,7 @@ class UpdateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_update)
 
         val deleteButton = findViewById<FloatingActionButton>(R.id.floatingActionDeleteButton)
-        val button = findViewById<Button>(R.id.button)
+        val button = findViewById<Button>(R.id.updateButton)
         val title = findViewById<EditText>(R.id.title)
         val pageNumber = findViewById<EditText>(R.id.pageNumber)
         val author = findViewById<EditText>(R.id.author)
