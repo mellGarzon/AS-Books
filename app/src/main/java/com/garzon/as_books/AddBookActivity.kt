@@ -19,7 +19,7 @@ class AddBookActivity : AppCompatActivity() {
         val type = findViewById<EditText>(R.id.type)
 
         registerButton.setOnClickListener{
-            val book = Book(null, pageNumber.text.toString().toInt(), bookMark.text.toString().toInt(), type.text.toString(), author.text.toString(), title.text.toString(), false)
+            val book = Book(null, pageNumber.text.toString().toInt(), bookMark.text.toString().toInt(), type.text.toString(), author.text.toString(), title.text.toString(), true)
             val bookDao = BookDao(this)
             bookDao.insert(book)
 
