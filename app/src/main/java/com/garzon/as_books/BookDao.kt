@@ -92,12 +92,10 @@ class BookDao(context: Context) {
     }
 
 
-    // TODO NEED FIX
-    // QUERY NOT WORKING
     fun getByTitle(title: String): ArrayList<Book>{
         Log.v("LOG","getByName")
         val db = database.writableDatabase
-        val sql = "SELECT * FROM $TABLE_BOOKS WHERE $BOOK_TITLE LIKE $title"
+        val sql = "SELECT * FROM $TABLE_BOOKS WHERE $BOOK_TITLE LIKE '%$title%'"
         val cursor = db.rawQuery(sql, null)
         val books = ArrayList<Book>()
         while (cursor.moveToNext()){

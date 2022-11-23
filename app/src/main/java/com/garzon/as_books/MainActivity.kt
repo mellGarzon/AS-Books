@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         val txtMsg = findViewById<TextView>(R.id.txtMsg)
         val bookDao = BookDao(this)
         //booksList.clear() //todo
-        booksList = bookDao.getAll()
-        //booksList = bookDao.getByTitle("title")
+        //booksList = bookDao.getAll()
+        booksList = bookDao.getByTitle("title")
         //booksList = bookDao.findIsRead(true)
         if (booksList.isEmpty()) {
             rvData.visibility = View.GONE;
