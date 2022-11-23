@@ -11,11 +11,11 @@ class DbHelper(context: Context) :
 
         val sql="CREATE TABLE $TABLE_BOOKS ($BOOK_ID  INTEGER PRIMARY KEY " +
                 "AUTOINCREMENT," +
-                "$BOOK_AUTHOR TEXT," +
-                "$BOOK_TITLE TEXT," +
-                "$BOOK_TYPE TEXT," +
                 "$BOOK_PAGES INTEGER," +
                 "$BOOK_BOOKMARK INTEGER," +
+                "$BOOK_TYPE TEXT," +
+                "$BOOK_AUTHOR TEXT," +
+                "$BOOK_TITLE TEXT," +
                 "$BOOK_IS_READ BOOL)"
 
         db.execSQL(sql)

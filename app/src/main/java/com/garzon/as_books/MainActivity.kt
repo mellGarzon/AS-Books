@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         Log.v("LOG", "Inicia RecyclerView")
         val adapter2 = BookAdapter(booksList)
         rvDados.adapter = adapter2
-         val layout = LinearLayoutManager(this)
+        val layout = LinearLayoutManager(this)
         rvDados.layoutManager = layout
     }
 }

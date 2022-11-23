@@ -12,7 +12,7 @@ class UpdateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_update)
 
         val deleteButton = findViewById<FloatingActionButton>(R.id.floatingActionDeleteButton)
-        val updateButton = findViewById<Button>(R.id.updateButton)
+        val button = findViewById<Button>(R.id.button)
         val title = findViewById<EditText>(R.id.title)
         val pageNumber = findViewById<EditText>(R.id.pageNumber)
         val author = findViewById<EditText>(R.id.author)
@@ -27,18 +27,18 @@ class UpdateActivity : AppCompatActivity() {
         bookMark.setText(book?.bookMark.toString())
         type.setText(book?.type.toString())
 
+        button.setOnClickListener{
+            val bookUpdate = Book(book?.id, pageNumber.toString().toInt(), bookMark.toString().toInt(), type.toString(), author.toString(), title.toString(), false)
+            val bookDao = BookDao(this)
+            bookDao.update(bookUpdate)
+            onBackPressed()
+        }
+
         deleteButton.setOnClickListener {
             val bookDao = BookDao(this)
             if (book != null) {
                 bookDao.remove(book)
             }
-            onBackPressed()
-        }
-
-        updateButton.setOnClickListener {
-            val bookUpdate = Book(book?.id, pageNumber.toString().toInt(), bookMark.toString().toInt(), book?.type.toString(), book?.author.toString(), book?.title.toString(), isRead = false)
-            val bookDao = BookDao(this)
-            bookDao.update(bookUpdate)
             onBackPressed()
         }
 

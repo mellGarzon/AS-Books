@@ -33,6 +33,7 @@ class BookDao(context: Context) {
         val db = database.writableDatabase
         val contentValues = ContentValues()
 
+        contentValues.put(BOOK_ID, book.id)
         contentValues.put(BOOK_AUTHOR, book.author)
         contentValues.put(BOOK_TITLE, book.title)
         contentValues.put(BOOK_TYPE, book.type)
@@ -51,10 +52,11 @@ class BookDao(context: Context) {
     }
 
 
-    fun update(book: Book) : Boolean{
+    fun update(book: Book) : String {
         val db = database.writableDatabase
         val contentValues = ContentValues()
 
+        contentValues.put(BOOK_ID, book.id)
         contentValues.put(BOOK_AUTHOR, book.author)
         contentValues.put(BOOK_TITLE, book.title)
         contentValues.put(BOOK_TYPE, book.type)
@@ -62,10 +64,14 @@ class BookDao(context: Context) {
         contentValues.put(BOOK_BOOKMARK, book.bookMark)
         contentValues.put(BOOK_IS_READ, book.isRead)
 
-        db.insertWithOnConflict(TABLE_BOOKS, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE)
+        val resp_id = db.insertWithOnConflict(TABLE_BOOKS, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE)
+        val msg = if(resp_id!=-1L){
+            "Book Updated Successfully"
+        }else{
+            "Error when Inserting Book"
+        }
         db.close()
-
-        return true
+        return msg
     }
 
 
